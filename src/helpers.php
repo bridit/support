@@ -91,7 +91,7 @@ if (!function_exists('object_fill')) {
 
       if ($attributeType === 'Carbon\Carbon') {
         $obj->{$name} = !blank($value)
-          ? Carbon::parse($value)->setTimezone(\Illuminate\Support\Facades\Config::get('app.timezone'))
+          ? Carbon::parse($value)->setTimezone(config('app.timezone', 'UTC'))
           : null;
         continue;
       }
