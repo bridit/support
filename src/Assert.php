@@ -2,15 +2,14 @@
 
 namespace Brid\Support;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 
 /**
- * Class Check
- * @package Core
+ * Class Assert
+ * @package Brid\Support
  */
-class Is
+class Assert
 {
   use Macroable;
 
@@ -95,7 +94,7 @@ class Is
    */
   public static function like(mixed $subject, mixed $pattern): bool
   {
-    return like($subject, $pattern);
+    return str_contains($subject, $pattern);
   }
 
   /**
@@ -119,7 +118,7 @@ class Is
    */
   public static function ilike(mixed $subject, mixed $pattern): bool
   {
-    return ilike($subject, $pattern);
+    return static::like(strtolower($subject), strtolower($pattern));
   }
 
   /**
