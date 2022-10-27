@@ -32,7 +32,7 @@ if (!function_exists('array_convert_key_case')) {
   function array_convert_key_case(array $array, callable|string $callback, bool $recursive = false): array
   {
     if (is_string($callback)) {
-      $callback = fn($key) => Str::$callback($key);
+      $callback = fn($key) => is_int($key) ? $key : Str::$callback($key);
     }
 
     if (false === $recursive) {
